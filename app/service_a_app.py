@@ -29,9 +29,9 @@ def calculate_average():
 
 @app.route('/')
 def home():
-    current_price = get_bitcoin_price()  # חישוב המחיר הנוכחי
-    bitcoin_prices.append(current_price)  # עדכון המחיר בתור המחירים
-    average_price = calculate_average()  # חישוב המחיר הממוצע
+    current_price = get_bitcoin_price() 
+    bitcoin_prices.append(current_price) 
+    average_price = calculate_average() 
     return render_template('index.html', current_price=current_price, average_price=average_price)
     
 if __name__ == '__main__':
