@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: service-a-container
-        image: avigailshekasta/k8s:latest
+        image: avigailshekasta/service-a:20
         ports:
         - containerPort: 8080
         livenessProbe:

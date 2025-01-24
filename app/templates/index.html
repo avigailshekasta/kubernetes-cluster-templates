@@ -3,39 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Price</title>
+    <title>Bitcoin Price Tracker</title>
     <script>
-        function fetchCurrentPrice() {
-            fetch('/current-price')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('currentPrice').innerText = "Current Price: " + data.current_price + " USD";
-                });
-        }
-
-        function fetchAveragePrice() {
-            fetch('/average-price')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('averagePrice').innerText = "Average Price (last 10 minutes): " + data.average_price_last_10_minutes + " USD";
-                });
-        }
-
-      
         setInterval(function() {
-            fetchCurrentPrice();
-            fetchAveragePrice();
+            location.reload(); // רענון העמוד כל דקה
         }, 60000);
-
-        window.onload = function() {
-            fetchCurrentPrice();
-            fetchAveragePrice();
-        };
     </script>
 </head>
 <body>
-    <h1>Bitcoin Price Updates</h1>
-    <div id="currentPrice"></div>
-    <div id="averagePrice"></div>
+    <h1>Bitcoin Price Tracker</h1>
+    <div>
+        <h2>Current Price: {{ current_price }} USD</h2>
+        <h2>Average Price (last 10 minutes): {{ average_price }} USD</h2>
+    </div>
 </body>
 </html>

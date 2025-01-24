@@ -29,30 +29,10 @@ def calculate_average():
 
 @app.route('/')
 def home():
-    return render_template('index.html') 
-
-@app.route('/current-price', methods=['GET'])
-def current_price():
-    price = get_bitcoin_price()  
-    return jsonify({'current_price': price})
-
-@app.route('/average-price', methods=['GET'])
-def average_price():
-    average = calculate_average()  
-    return jsonify({'average_price_last_10_minutes': average})
-
-
-def update_prices():
-    while True:
-        price = get_bitcoin_price()  
-        bitcoin_prices.append(price)  
-        time.sleep(60)  
-
-if __name__ == '__main__':
-   
-    from threading import Thread
-    thread = Thread(target=update_prices)
-    thread.daemon = True
-    thread.start()
+    current_price = get_bitcoin_price()  # חישוב המחיר הנוכחי
+    bitcoin_prices.append(current_price)  # עדכון המחיר בתור המחירים
+    average_price = calculate_average()  # חישוב המחיר הממוצע
+    return render_template('index.html', current_price=current_price, average_price=average_price)
     
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
