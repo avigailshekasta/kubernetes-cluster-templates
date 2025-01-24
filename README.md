@@ -40,24 +40,24 @@ The project files are located in the k8sCluster directory and include:
 **How to Run the Project**
 
 1. Ensure you have an active Azure account with appropriate permissions.
-1. Install the following tools:
-- Terraform
-- Azure CLI
-- Docker
-- kubectl
+2. Install the following tools:
+    - Terraform
+    - Azure CLI
+    - Docker
+    - kubectl
 3. Run the Terraform script to create the cluster:
 
-terraform init 
-terraform apply
+    - terraform init 
+    - terraform apply
 
 4. Deploy the services and network policies:
 
-kubectl apply -f service-a.yaml 
-kubectl apply -f service-b.yaml 
-kubectl apply -f network-policy.yaml 
-kubectl apply -f ingress.yaml
+    - kubectl apply -f service-a.yaml 
+    - kubectl apply -f service-b.yaml 
+    - kubectl apply -f network-policy.yaml 
+    - kubectl apply -f ingress.yaml
 
 5. Build and push the Docker image for Service-A:
 
-docker build -t <your-dockerhub-username>/service-a:latest . 
-docker push <your-dockerhub-username>/service-a:latest
+    - docker build -t <your-dockerhub-username>/service-a:latest . 
+    - docker push <your-dockerhub-username>/service-a:latest
